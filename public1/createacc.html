@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Account</title>
+    <link rel="stylesheet" type="text/css" href="createacc.css">
+</head>
+<body>
+    <div class="create-account-container">
+        <form id="createAccountForm" class="create-account-form">
+            <!-- Organization Details Section -->
+            <div id="orgDetailsSection">
+                <label>Organization Name: <input type="text" id="orgName" required></label>
+                <label>Address: <input type="text" id="orgAddress" required></label>
+                <label>Email: <input type="email" id="email" required></label>
+                <label>Phone: <input type="tel" id="phone" required></label>
+                <label>Year of Establishment: <input type="number" id="yearEstablished" min="1900" max="2023" required></label>    
+                <div class="upload-logo">
+                    <label for="logoUpload1">Upload proof of identity</label>
+                    <input type="file" id="logoUpload1" accept="image/*">
+                    <input type="file" id="logoUpload2" accept="image/*">
+                    <input type="file" id="logoUpload3" accept="image/*">
+                    <button type="button" id="continueButton">Continue</button>
+                </div>
+            </div>
+
+            <!-- Account Creation Section -->
+            <div id="accountCreationSection" style="display: none;">
+                <label>Create Username: <input type="text" id="username" required></label>
+                <label>Create Password: <input type="password" id="password" required></label>
+                <label>Confirm Password: <input type="password" id="confirmPassword" required></label>
+                <div class="form-buttons">
+                    <button type="button" id="backButton">Back</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="createacc.js"></script>
+</body>
+</html>

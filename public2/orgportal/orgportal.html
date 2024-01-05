@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Portal</title>
+    <link rel="stylesheet" href="orgportal.css">
+</head>
+
+<header>
+    <img id="header-logo" src="logo-placeholder.png" alt="Organization Logo">
+    <h1 id="organization-name">Organization Name</h1>
+    <nav>
+        <button id="menu-button">☰</button>
+        <div id="menu" class="hidden">
+            <a href="option1.html">Option 1</a>
+            <a href="option2.html">Option 2</a>
+            <a href="option3.html">Option 3</a>
+            <!-- Add more menu options as needed -->
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div id="orgDescriptionDisplay"></div>
+    <button id="create-classrooms">ClassRooms</button>
+    <p>Information about classrooms...</p>
+</main>
+
+<footer>
+    <img id="footer-logo" src="logo-placeholder.png" alt="Organization Logo">
+    <img src="/images/1place.png" alt="Static Logo" class="static-logo">
+    <div id="footer-info" class="footer-info">2023 Organization Name</div>
+</footer>
+<script src="/updateOrgDetails.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var portalId = localStorage.getItem('currentOrgPortalId');
+    if (portalId) {
+        loadOrgData(portalId);
+    } else {
+        console.error('Organization portal ID not found. Redirecting to login page.');
+        window.location.href = 'nameLogoLogin.html'; // Adjust as necessary
+    }
+
+    document.getElementById('create-classrooms').addEventListener('click', function() {
+        window.location.href = '/public2/classroom/classroom.html?portalId=' + portalId;
+    });
+});
+
+function loadOrgData(portalId) {
+    var orgData = JSON.parse(localStorage.getItem('orgData') || '{}')[portalId];
+    if (orgData) {
+        document.getElementById('organization-name').textContent = orgData.orgName || 'Organization Name';
+        document.getElementById('footer-info').textContent = '© 2023 ' + (orgData.orgName || 'Organization');
+        document.getElementById('header-logo').src = orgData.orgLogo || 'default-logo.png';
+        document.getElementById('footer-logo').src = orgData.orgLogo || 'default-logo.png';
+        document.getElementById('orgDescriptionDisplay').textContent = orgData.orgDescription || 'No description available.';
+    } else {
+        console.error('Organization details not found for this portal.');
+    }
+}
+
+
+
+</script>
+
+<script src="orgportal.js"></script>
+</body>
+</html>

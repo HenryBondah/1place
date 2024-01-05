@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.application-list, .application-details {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.application-summary {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.application-summary:last-child {
+    border-bottom: none;
+}
+
+.application-summary p {
+    margin: 5px 0;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.application-details {
+    display: none; /* Hidden by default, shown when details are available */
+}
+
+.application-details h3 {
+    color: #333;
+}
+
+.application-details p {
+    color: #666;
+}

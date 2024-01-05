@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Head content -->
+</head>
+<body>
+    <h1>Admin Login</h1>
+    <form id="adminLoginForm">
+        <input type="text" id="adminUsername" placeholder="Username" required>
+        <input type="password" id="adminPassword" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+    document.getElementById('adminLoginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var username = document.getElementById('adminUsername').value;
+        var password = document.getElementById('adminPassword').value;
+
+        var approvedForms = JSON.parse(localStorage.getItem('submittedForms') || '[]');
+        var matchedForm = approvedForms.find(form => form.username === username && form.password === password && form.status === 'approved');
+
+        if (matchedForm) {
+            window.location.href = 'adminPortal.html'; // Redirect to admin portal
+        } else {
+            alert('Invalid credentials or account not approved.');
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.draggable-container {
+    width: 100%;
+    min-height: 200px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.class-item {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: move; /* Indicate draggable items */
+}
+
+
+header, footer {
+    background-color: #f2f2f2;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header #header-logo, footer #footer-logo, footer .static-logo {
+    width: 100px;
+    height: auto;
+}
+
+header h1, footer .footer-info {
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+nav {
+    position: relative;
+}
+
+#menu {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+#menu {
+    display: none;
+    position: absolute;
+    right: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+#menu a {
+    display: block;
+    color: black;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+#menu a:hover {
+    background-color: #ddd;
+}
+
+#menu-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+/* Footer Layout for Larger Screens */
+footer {
+    flex-direction: column;
+    align-items: center;
+}
+
+footer .static-logo, footer #footer-logo {
+    display: inline-block; /* Logos side by side */
+    margin-right: 10px; /* Space between logos */
+}
+
+footer .footer-info {
+    width: 70px;
+    order: 2; /* Information below the logos */
+    margin-top: 10px; /* Space above the information */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    header, footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header h1, footer .footer-info {
+        order: -1; /* Place the title/info above the logo/menu */
+    }
+
+    footer .static-logo, footer #footer-logo {
+        width: 80px; /* Smaller logos for mobile */
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    /* Adjust styles for small screens */
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Portal</title>
+    <link rel="stylesheet" href="name&logoinfor.css">
+</head>
+<header>
+    <img src="/images/1place.png" alt="Logo" class="logo">
+</header>
+<body>
+    <div class="form-container">
+        <form id="orgForm">
+            <input type="text" id="orgName" placeholder="Enter Organization Name" required>
+            <input type="file" id="orgLogo" accept="image/*" required>
+            <textarea id="orgDescription" placeholder="Write about your organization in less than 500 words" maxlength="3000" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="orgDetailsDisplay"></div>
+    </div>
+    
+    <script>
+     document.getElementById('orgForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var portalId = localStorage.getItem('currentOrgPortalId');
+    var orgName = document.getElementById('orgName').value;
+    var orgLogo = document.getElementById('orgLogo').files[0]; // Assuming a single file upload
+    var orgDescription = document.getElementById('orgDescription').value;
+
+    if (portalId && orgName && orgDescription) {
+        if (orgLogo) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                saveOrgData(portalId, orgName, e.target.result, orgDescription);
+            };
+            reader.readAsDataURL(orgLogo);
+        } else {
+            saveOrgData(portalId, orgName, null, orgDescription);
+        }
+    } else {
+        alert('Please fill in all required fields.');
+    }
+});
+
+function saveOrgData(portalId, orgName, orgLogo, orgDescription) {
+    var orgData = JSON.parse(localStorage.getItem('orgData') || '{}');
+    orgData[portalId] = { orgName, orgLogo, orgDescription };
+    localStorage.setItem('orgData', JSON.stringify(orgData));
+    redirectToNextPage(portalId);
+}
+
+
+function redirectToNextPage(portalId) {
+    window.location.href = '/public2/orgportal/orgportal.html?portalId=' + portalId;
+}
+    </script>
+    
+    <footer>
+        <img src="/images/1place.png" alt="Footer Logo" class="footer-logo">
+        <div class="footer-info">Other Information</div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Class</title>
+    <link rel="stylesheet" href="createClass.css">
+</head>
+<body>
+    <header>
+        <img id="header-logo" src="logo-placeholder.png" alt="Organization Logo">
+        <h1 id="organization-name">Organization Name</h1>
+        <!-- Navigation and menu button -->
+    </header>
+
+    <main>
+        <form id="createClassForm">
+            <label for="className">Class Name:</label>
+            <input type="text" id="className" name="className" required>
+
+            <!-- Inside the createClassForm -->
+            <label for="classUsername">Class Username:</label>
+            <input type="text" id="classUsername" name="classUsername" required>
+
+            <label for="classPassword">Class Password:</label>
+            <input type="password" id="classPassword" name="classPassword" required>
+
+            <div id="studentsContainer">
+                <label>Students:</label>
+                <button type="button" id="addStudent">+ Add Student</button>
+                <!-- Student entries will be added here -->
+            </div>
+            
+
+            <div id="coursesContainer">
+                <label>Courses:</label>
+                <button type="button" id="addCourse">+ Add Course</button>
+            </div>
+
+            <label for="classSlogan">Class Slogan:</label>
+            <input type="text" id="classSlogan" name="classSlogan">
+
+            <button type="submit">Class Ready</button>
+        </form>
+    </main>
+
+    <footer>
+        <img id="footer-logo" src="logo-placeholder.png" alt="Organization Logo">
+        <img src="/images/1place.png" alt="Static Logo" class="static-logo">
+        <div id="footer-info" class="footer-info">2023 Organization Name</div>
+    </footer>
+    <script src="/updateOrgDetails.js"></script>
+    <script src="createClass.js"></script>
+</body>
+</html>

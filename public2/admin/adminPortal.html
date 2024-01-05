@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal</title>
+    <!-- Add any additional CSS here -->
+</head>
+<body>
+    <h1>Admin Portal</h1>
+    <div id="class-list"></div>
+    <section id="admin-credentials">
+        <h2>Admin Credentials</h2>
+        <p>Username: <span id="display-username">admin</span></p>
+        <p>Password: <span id="display-password">password</span></p>
+        <button id="edit-credentials">Edit Credentials</button>
+    </section>
+
+    <section id="edit-credentials-section" style="display: none;">
+        <h2>Edit Credentials</h2>
+        <form id="credentials-form">
+            <input type="text" id="new-username" placeholder="New Username" required>
+            <input type="password" id="new-password" placeholder="New Password" required>
+            <button type="submit">Update Credentials</button>
+        </form>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        loadAdminCredentials();
+
+        document.getElementById('edit-credentials').addEventListener('click', function() {
+            document.getElementById('edit-credentials-section').style.display = 'block';
+        });
+
+        document.getElementById('credentials-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            updateAdminCredentials();
+        });
+    });
+
+    function loadAdminCredentials() {
+        var currentAdmin = JSON.parse(localStorage.getItem('currentAdmin')) || {};
+        document.getElementById('display-username').textContent = currentAdmin.username || 'No admin selected';
+        document.getElementById('display-password').textContent = currentAdmin.password || '';
+    }
+
+    function updateAdminCredentials() {
+        var newUsername = document.getElementById('new-username').value;
+        var newPassword = document.getElementById('new-password').value;
+
+        if (newPassword.length <= 6) {
+            alert('Password must be more than 6 characters.');
+            return;
+        }
+
+        var approvedForms = JSON.parse(localStorage.getItem('submittedForms')) || [];
+        var adminForm = approvedForms.find(form => form.username === newUsername);
+
+        if (adminForm) {
+            adminForm.password = newPassword;
+            localStorage.setItem('submittedForms', JSON.stringify(approvedForms));
+            localStorage.setItem('currentAdmin', JSON.stringify({ username: newUsername, password: newPassword }));
+            alert('Credentials updated successfully');
+            loadAdminCredentials();
+        } else {
+            alert('Username not found in approved forms.');
+        }
+
+        document.getElementById('edit-credentials-section').style.display = 'none';
+    }
+    </script>
+    <script src="adminPortal.js"></script>
+</body>
+</html>

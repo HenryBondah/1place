@@ -1,0 +1,168 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Existing styles... */
+
+.student-entry {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+.student-entry.minimized {
+    height: 30px;
+    overflow: hidden;
+}
+
+.student-entry.minimized .done-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.done-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.done-button:hover {
+    background-color: #45a049;
+}
+
+.student-details.hidden {
+    display: none;
+}
+header, footer {
+    background-color: #f2f2f2;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header #header-logo, footer #footer-logo, footer .static-logo {
+    width: 100px;
+    height: auto;
+}
+
+header h1, footer .footer-info {
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+nav {
+    position: relative;
+}
+
+#menu {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+#menu {
+    display: none;
+    position: absolute;
+    right: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+#menu a {
+    display: block;
+    color: black;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+#menu a:hover {
+    background-color: #ddd;
+}
+
+#menu-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+/* Footer Layout for Larger Screens */
+footer {
+    flex-direction: column;
+    align-items: center;
+}
+
+footer .static-logo, footer #footer-logo {
+    display: inline-block; /* Logos side by side */
+    margin-right: 10px; /* Space between logos */
+}
+
+footer .footer-info {
+    width: 70px;
+    order: 2; /* Information below the logos */
+    margin-top: 10px; /* Space above the information */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    header, footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header h1, footer .footer-info {
+        order: -1; /* Place the title/info above the logo/menu */
+    }
+
+    footer .static-logo, footer #footer-logo {
+        width: 80px; /* Smaller logos for mobile */
+    }
+}

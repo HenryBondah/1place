@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <form class="login-form" id="loginForm">
+            <input type="text" placeholder="Username" id="username">
+            <input type="password" placeholder="Password" id="password">
+            <button type="submit">Log In</button>
+            <div class="alternative-login">
+            </div>
+        </form>
+    </div>
+
+    <script>
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    
+    // Admin credentials for example
+    var adminUsername = 'admin@1place.org';
+    var adminPassword = 'adminpassword';
+
+    if (username === adminUsername && password === adminPassword) {
+        // Admin login
+        window.location.href = '../public2/adminPortal.html';
+    } else {
+        // Retrieve approved forms
+        var approvedForms = JSON.parse(localStorage.getItem('submittedForms') || '[]')
+            .filter(form => form.status === 'approved');
+        console.log('Approved forms:', approvedForms); // Debugging log
+
+        var approvedForm = approvedForms.find(form => form.username === username && form.password === password);
+
+        if (approvedForm) {
+            // Approved form login
+            console.log('Logging in as an approved user'); // Debugging log
+            window.location.href = '../public2/orgportal.html';
+        } else {
+            // Check if it matches any class credentials
+            var classes = JSON.parse(localStorage.getItem('classes')) || [];
+            var classFound = classes.find(c => c.username === username && c.password === password);
+
+            if (classFound) {
+                // Class login
+                localStorage.setItem('currentClassIndex', classes.indexOf(classFound));
+                window.location.href = '../public2/classDetails.html';
+            } else {
+                // Invalid credentials
+                console.log('Invalid credentials'); // Debugging log
+                alert('Invalid credentials. Please try again.');
+            }
+        }
+    }
+});
+    </script>
+</body>
+</html>

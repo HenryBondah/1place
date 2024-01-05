@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom Portal</title>
+    <link rel="stylesheet" href="classroom.css">
+</head>
+<body>
+    <header>
+        <img id="header-logo" src="logo-placeholder.png" alt="Organization Logo">
+        <h1 id="organization-name">Organization Name</h1>
+        
+        <div id="admin-login">
+            <a href="/public2/admin/adminLogin.html">Admin</a>
+        </div>
+    </header>
+
+    <main>
+        <div id="class-list" class="draggable-container">
+            <!-- Draggable classes will be added here -->
+        </div>
+        <button id="create-classroom">Create Class</button>
+    </main>
+
+    <footer>
+        <img id="footer-logo" src="logo-placeholder.png" alt="Organization Logo">
+        <img src="/images/1place.png" alt="Static Logo" class="static-logo">
+        <div id="footer-info" class="footer-info">2023 Organization Name</div>
+    </footer>
+    <script src="/updateOrgDetails.js"></script>
+    <script src="classroom.js"></script>
+</body>
+</html>
